@@ -1,20 +1,34 @@
 'use strict';
 
-const gridContainer = document.querySelector('.grid-container');
-
-const generateBoxes = (gridSize) => {
-  for (let index = 0; index < gridSize; index++) {
+const generateBoxes = (gridSize, gridContainer) => {
+  for (let i = 0; i < gridSize; i++) {
     const gridRow = document.createElement('div');
     gridRow.classList.add('grid-row');
-    for (let index = 0; index < gridSize; index++) {
+    for (let j = 0; j < gridSize; j++) {
       const gridBox = document.createElement('div');
       gridBox.classList.add('grid-box');
       gridRow.appendChild(gridBox);
     }
     gridContainer.appendChild(gridRow);
   }
+
+  let currentGridBox = null;
+
+  const handleMouseOver = (event) => {
+    event.target.style.backgroundColor = 'black';
+  };
+
+  gridContainer.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+    gridContainer.addEventListener('mouseover', handleMouseOver);
+  });
+
+  gridContainer.addEventListener('mouseup', () => {
+    gridContainer.removeEventListener('mouseover', handleMouseOver);
+  });
 };
 
-let gridSize = 16;
+let gridSize = 64;
+const gridContainer = document.querySelector('.grid-container');
 
-generateBoxes(gridSize);
+generateBoxes(gridSize, gridContainer);

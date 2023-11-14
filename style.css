@@ -36,7 +36,3 @@ body {
   background-color: white;
   flex: 1 1 auto;
 }
-
-.grid-box:hover {
-  background-color: black;
-}
