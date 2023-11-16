@@ -25,14 +25,13 @@ body {
   display: grid;
   height: 540px;
   width: 540px;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 6px;
+  background: white;
 }
 
 .grid-box {
-  background: white;
+  background: rgba(255, 255, 255, 1);
   border: black;
-}
-.grid-box:hover {
-  background: black;
 }
 .grid-container div {
   /* background-color: white; */
@@ -76,4 +75,32 @@ body {
   height: 8px;
   background: #f5f5f5;
   border-radius: 20px;
+}
+
+#settings-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#settings-container button {
+  height: 60px;
+  width: 120px;
+  border: none;
+  border-radius: 10px;
+  font-size: 24px;
+  background: #f5f5f5;
+  transition: box-shadow 0.2s ease;
+  transition: scale 0.2s ease;
+  box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 6px;
+}
+
+#settings-container button:hover {
+  scale: 1.2;
+  box-shadow: rgba(0, 0, 0, 0.3) 6px 6px 9px;
+}
+
+.active {
+  scale: 1.15;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 8px;
 }

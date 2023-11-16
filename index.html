@@ -12,19 +12,23 @@
   </header>
   <body>
     <div>
+      <div id="settings-container">
+        <button type="button" id="classic">Classic</button>
+        <button type="button" id="colorful">Colorful</button>
+        <button type="button" id="shade">Shade</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
       <div class="grid-container"></div>
-      <div class="settings-container">
-        <div class="slider-container">
-          <div id="grid-size-value">16 x 16</div>
-          <input
-            type="range"
-            class="grid-size-slider"
-            min="4"
-            max="64"
-            value="16"
-            step="1"
-          />
-        </div>
+      <div class="slider-container">
+        <div id="grid-size-value">16 x 16</div>
+        <input
+          type="range"
+          class="grid-size-slider"
+          min="4"
+          max="64"
+          value="16"
+          step="1"
+        />
       </div>
     </div>
     <script src="script.js"></script>
