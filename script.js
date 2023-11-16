@@ -1,34 +1,29 @@
-'use strict';
+const gridContainer = document.querySelector('.grid-container');
+const gridSizeSlider = document.querySelector('.grid-size-slider');
+const gridSizeValue = document.querySelector('#grid-size-value');
 
-const generateBoxes = (gridSize, gridContainer) => {
-  for (let i = 0; i < gridSize; i++) {
-    const gridRow = document.createElement('div');
-    gridRow.classList.add('grid-row');
-    for (let j = 0; j < gridSize; j++) {
-      const gridBox = document.createElement('div');
-      gridBox.classList.add('grid-box');
-      gridRow.appendChild(gridBox);
-    }
-    gridContainer.appendChild(gridRow);
-  }
-
-  let currentGridBox = null;
-
-  const handleMouseOver = (event) => {
-    event.target.style.backgroundColor = 'black';
-  };
-
-  gridContainer.addEventListener('mousedown', (event) => {
-    event.preventDefault();
-    gridContainer.addEventListener('mouseover', handleMouseOver);
-  });
-
-  gridContainer.addEventListener('mouseup', () => {
-    gridContainer.removeEventListener('mouseover', handleMouseOver);
-  });
+gridSizeSlider.oninput = (e) => {
+  gridSizeValue.innerHTML = `${e.target.value} x ${e.target.value}`;
 };
 
-let gridSize = 64;
-const gridContainer = document.querySelector('.grid-container');
+gridSizeSlider.onchange = (e) => {
+  generateGrid(e.target.value);
+};
 
-generateBoxes(gridSize, gridContainer);
+const generateGrid = (gridSize) => {
+  gridContainer.innerHTML = '';
+  gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+
+  for (let i = 0; i < gridSize * gridSize; i++) {
+    const gridBox = document.createElement('div');
+    gridBox.classList.add('grid-box');
+    gridContainer.appendChild(gridBox);
+  }
+};
+
+const defaultGridSize = 16;
+
+window.onload = () => {
+  generateGrid(defaultGridSize);
+};

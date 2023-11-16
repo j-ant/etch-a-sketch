@@ -7,10 +7,26 @@
     <link rel="stylesheet" href="style.css" />
     <title>Etch-a-Sketch</title>
   </head>
-  <body>
+  <header>
     <h1 class="header">Etch-a-Sketch</h1>
-    <div class="grid-container"></div>
-
+  </header>
+  <body>
+    <div>
+      <div class="grid-container"></div>
+      <div class="settings-container">
+        <div class="slider-container">
+          <div id="grid-size-value">16 x 16</div>
+          <input
+            type="range"
+            class="grid-size-slider"
+            min="4"
+            max="64"
+            value="16"
+            step="1"
+          />
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
