@@ -21,6 +21,14 @@ body {
   color: #222;
 }
 
+#pen-logo {
+  height: 0.8em;
+}
+
+footer {
+  margin: 40px 0 10px 0;
+}
+
 .grid-container {
   display: grid;
   height: 540px;
