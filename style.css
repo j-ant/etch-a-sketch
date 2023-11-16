@@ -100,6 +100,12 @@ body {
   box-shadow: rgba(0, 0, 0, 0.3) 6px 6px 9px;
 }
 
+#settings-container button:active {
+  opacity: 0.9;
+  scale: 1.15;
+  box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 8px;
+}
+
 .active {
   scale: 1.15;
   box-shadow: rgba(0, 0, 0, 0.5) 5px 5px 8px;

@@ -12,32 +12,35 @@ const modes = Object.freeze({
   SHADE: 'shade',
 });
 
-let activeMode = modes.CLASSIC;
-
 gridSizeSlider.oninput = (e) => {
   gridSizeValue.innerHTML = `${e.target.value} x ${e.target.value}`;
 };
 
 gridSizeSlider.onchange = (e) => {
-  generateGrid(e.target.value);
+  gridSize = e.target.value;
+  generateGrid(gridSize);
 };
 
 document.body.onmousedown = () => {
   gridContainer.addEventListener('mouseover', changeColor);
+  e.prevenDefault();
 };
 document.body.onmouseup = () => {
   gridContainer.removeEventListener('mouseover', changeColor);
 };
 
-classicModeButton.onclick = () => {
-  activeMode = modes.CLASSIC;
+const setMode = (mode, button) => {
+  activeMode = mode;
+  classicModeButton.classList.remove('active');
+  shadeModeButton.classList.remove('active');
+  colorfulModeButton.classList.remove('active');
+  button.classList.add('active');
 };
-shadeModeButton.onclick = () => {
-  activeMode = modes.SHADE;
-};
-colorfulModeButton.onclick = () => {
-  activeMode = modes.COLORFUL;
-};
+
+classicModeButton.onclick = () => setMode(modes.CLASSIC, classicModeButton);
+shadeModeButton.onclick = () => setMode(modes.SHADE, shadeModeButton);
+colorfulModeButton.onclick = () => setMode(modes.COLORFUL, colorfulModeButton);
+
 resetButton.onclick = () => {
   console.log(gridSize);
   generateGrid(gridSize);
@@ -91,6 +94,7 @@ const resetGrid = () => {
 
 const defaultGridSize = 16;
 let gridSize = defaultGridSize;
+let activeMode = modes.CLASSIC;
 
 window.onload = () => {
   generateGrid(defaultGridSize);
